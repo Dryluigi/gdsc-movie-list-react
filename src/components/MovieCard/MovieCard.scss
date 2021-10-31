@@ -1,0 +1,32 @@
+@import '../../sass/variables';
+
+.movie-card {
+  color: white;
+  align-self: flex-start;
+  background-color: $colorSecondary;
+  transition: transform .1s ease-in;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &__info {
+    padding: .75rem;
+    pointer-events: none;
+  }
+
+  &__poster {
+    height: 450px;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    pointer-events: none;
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,16 @@
+@import '../../sass/variables';
+
+.movie-list {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat( auto-fill, minmax(300px, 1fr) );
+  grid-gap: 2rem;
+}
+
+.home-brand {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  font-size: 3.5rem;
+  color: $colorAccent2;
+  font-family: $fontPrimary;
+}
