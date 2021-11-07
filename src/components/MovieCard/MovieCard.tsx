@@ -2,7 +2,7 @@ import React from 'react';
 
 import './MovieCard.scss';
 
-interface MovieCardProps {
+export interface MovieCardProps {
   title: string;
   overview: string;
   image: string;
