@@ -1,5 +1,6 @@
 const routes = {
-  discoverMovie: '/discover/movie'
+  discoverMovie: '/discover/movie',
+  searchMovie: '/search/movie'
 };
 
 export default routes;

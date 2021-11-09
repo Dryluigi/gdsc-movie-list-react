@@ -20,7 +20,6 @@ const Home = () => {
 
     axios.get(`${BASE_API_URL}${discoverMovieUrl}?api_key=${API_KEY}`)
       .then(data => {
-        console.log(data);
         setMovies(prevMovies => {
           const response = data.data;
           const result: MovieCardProps[] = response.results.map((r: any) => ({

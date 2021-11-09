@@ -1,10 +1,10 @@
 @import '../../sass/variables';
 
 .search-form {
-  margin: auto;
-  margin-bottom: 2rem;
   display: flex;
+  margin-bottom: 2rem;
   max-width: 800px;
+  margin: auto;
 
   input {
     flex: 1;
@@ -37,5 +37,47 @@
     &:hover {
       opacity: .9;
     }
+  }
+
+  &__input {
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    position: relative;
+  }
+
+  &__dropdown {
+    z-index: 99;
+    list-style-type: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    color: white;
+    background-color: $colorSecondary;
+    height: 450px;
+    overflow-y: scroll;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .3);
+  }
+
+  &__item {
+    padding: .5rem;
+    display: flex;
+    cursor: pointer;
+
+    img {
+      height: 75px;
+      margin-right: 1rem;
+    }
+
+    &:hover {
+      background-color: $colorPrimary;
+    }
+  }
+
+  &__item-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: .5rem;
   }
 }
