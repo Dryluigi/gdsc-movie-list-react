@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import './Home.scss';
-
 import axios from 'axios';
 import Search from '../../components/Search/Search';
 import MovieCard, { MovieCardProps } from '../../components/MovieCard/MovieCard';
-
 import routes from '../../constants/apiRoutes';
-
 
 const Home = () => {
   const [movies, setMovies] = useState<MovieCardProps[]>([]);

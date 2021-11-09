@@ -1,24 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import './Search.scss';
 
 import routes from '../../constants/apiRoutes';
 import Dropdown, { DropdownItemProps } from './Dropdown/Dropdown';
 
-const Search = () => {
-  const [search, setSearch] = useState('');
+const Search: React.FC<{ defaultSearch?: string }> = ({ defaultSearch = '' }) => {
+  const [isFirst, setIsFirst] = useState(true);
+  const [search, setSearch] = useState(defaultSearch);
   const [dropdownItems, setDropdownItems] = useState<DropdownItemProps[]>([]);
+  const navigate = useNavigate();
 
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
+    setIsFirst(false);
   };
 
   useEffect(() => {
-
     const apiCallTimeout = setTimeout(() => {
       setDropdownItems(() => []);
-      if (search.trim().length > 0) {
+      if (search.trim().length > 0 && !isFirst) {
         const BASE_API_URL = process.env.REACT_APP_MOVIE_API_URL ?? '';
         const API_KEY = process.env.REACT_APP_MOVIE_API_KEY ?? '';
         const BASE_CONTENT_URL = process.env.REACT_APP_BASE_CONTENT_URL ?? '';
@@ -46,10 +49,17 @@ const Search = () => {
     return () => {
       clearTimeout(apiCallTimeout);
     }
-  }, [search]);
+  }, [search, isFirst]);
+
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (search.trim().length > 0) {
+      navigate(`/s/${search}`);
+    }
+  };
 
   return (
-    <form action="#" className="search-form">
+    <form className="search-form" onSubmit={submitHandler}>
       <div className="search-form__input">
         <input type="text" name="search" id="search" value={search} onChange={changeHandler} />
         {dropdownItems.length > 0 &&
