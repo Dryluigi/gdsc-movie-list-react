@@ -2,6 +2,7 @@ import React from 'react';
 import Item from './Item/Item';
 
 export interface DropdownItemProps {
+  id: string,
   title: string;
   image: string;
   year: number;

@@ -6,6 +6,7 @@
   align-self: flex-start;
   background-color: $colorSecondary;
   transition: transform .1s ease-in;
+  text-decoration: none;
 
   &:hover {
     transform: scale(1.05);

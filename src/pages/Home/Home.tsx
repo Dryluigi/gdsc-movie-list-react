@@ -18,10 +18,13 @@ const Home = () => {
       .then(data => {
         setMovies(prevMovies => {
           const response = data.data;
+          console.log(response);
           const result: MovieCardProps[] = response.results.map((r: any) => ({
+            id: r.id,
             image: `${BASE_CONTENT_URL}${r.poster_path}`,
-            overview: r.overview.substring(0, 50) + '...',
-            title: `${r.original_title} (${r.release_date.split('-')[0]})`
+            overview: r.overview,
+            title: `${r.original_title} (${r.release_date.split('-')[0]})`,
+            year: r.release_date.split('-')[0]
           } as MovieCardProps));
 
           return prevMovies.concat(result);
@@ -31,15 +34,15 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <div className="container">
       <h1 className="text-center home-brand">Movie List</h1>
       <Search />
       <div className="movie-list">
         {movies.map(movies => (
-          <MovieCard key={movies.title} title={movies.title} overview={movies.overview} image={movies.image} />
+          <MovieCard key={movies.title} {...movies} />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

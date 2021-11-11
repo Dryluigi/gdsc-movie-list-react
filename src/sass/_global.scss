@@ -38,3 +38,9 @@ body {
   color: $colorAccent2;
   font-family: $fontPrimary;
 }
+
+.container {
+  margin: auto;
+  width: 90%;
+  max-width: 1440px;
+}

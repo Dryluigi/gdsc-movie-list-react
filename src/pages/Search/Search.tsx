@@ -26,9 +26,11 @@ const Search = () => {
         const fetchedMovies: any[] = data.data.results;
         setMovies(() => fetchedMovies.map(m => {
           const dropdownItemObject: MovieCardProps = {
+            id: m.id,
             title: m.original_title,
             image: `${BASE_CONTENT_URL}${m.poster_path}`,
-            overview: m.overview.substring(0, 20) + '...',
+            overview: m.overview,
+            year: m.release_date.split('-')[0]
           }
 
           return dropdownItemObject;
@@ -38,17 +40,16 @@ const Search = () => {
   }, [query]);
 
   return (
-    <>
+    <div className="container">
       <h1 className="text-center home-brand">Movie List</h1>
       <SearchComponent defaultSearch={query} />
       <p className="query-text">Search result for: {query}</p>
       <div className="movie-list">
-        {movies.map(movies => (
-          <MovieCard key={movies.title} title={movies.title} overview={movies.overview} image={movies.image} />
+        {movies.map(movie => (
+          <MovieCard key={movie.title} {...movie} />
         ))}
       </div>
-
-    </>
+    </div>
   );
 };
 

@@ -32,6 +32,7 @@ const Search: React.FC<{ defaultSearch?: string }> = ({ defaultSearch = '' }) =>
             const fetchedMovies: any[] = data.data.results;
             setDropdownItems(() => fetchedMovies.map(m => {
               const dropdownItemObject: DropdownItemProps = {
+                id: m.id,
                 title: m.original_title,
                 image: `${BASE_CONTENT_URL}${m.poster_path}`,
                 year: +m.release_date.split('-')[0],
@@ -65,7 +66,7 @@ const Search: React.FC<{ defaultSearch?: string }> = ({ defaultSearch = '' }) =>
         {dropdownItems.length > 0 &&
           <Dropdown>
             {dropdownItems.map(item => (
-              <Dropdown.Item title={item.title} image={item.image} year={item.year} />
+              <Dropdown.Item id={item.id} title={item.title} image={item.image} year={item.year} />
             ))}
           </Dropdown>
         }

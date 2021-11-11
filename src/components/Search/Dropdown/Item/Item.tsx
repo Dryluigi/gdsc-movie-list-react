@@ -1,15 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { DropdownItemProps } from '../Dropdown';
 
-const Item: React.FC<DropdownItemProps> = ({ title, image, year }) => {
+const Item: React.FC<DropdownItemProps> = ({ id, title, image, year }) => {
   return (
-    <li className="search-form__item">
-      <img src={image} alt="dropdown_image" />
-      <div className="search-form__item-info">
-        <p className="search-form__item-title">{title}</p>
-        <p>Tahun: {year}</p>
-      </div>
+    <li>
+      <Link className="search-form__item" to={`/detail/${id}`}>
+        <img src={image} alt="dropdown_image" />
+        <div className="search-form__item-info">
+          <p className="search-form__item-title">{title}</p>
+          <p>Tahun: {year}</p>
+        </div>
+      </Link>
     </li>
   );
 };
