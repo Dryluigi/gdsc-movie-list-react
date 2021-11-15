@@ -4,6 +4,7 @@ import axios from 'axios';
 import Search from '../../components/Search/Search';
 import MovieCard, { MovieCardProps } from '../../components/MovieCard/MovieCard';
 import routes from '../../constants/apiRoutes';
+import WishlistButton from '../../components/WishlistButton/WishlistButton';
 
 const Home = () => {
   const [movies, setMovies] = useState<MovieCardProps[]>([]);
@@ -18,12 +19,11 @@ const Home = () => {
       .then(data => {
         setMovies(prevMovies => {
           const response = data.data;
-          console.log(response);
           const result: MovieCardProps[] = response.results.map((r: any) => ({
             id: r.id,
             image: `${BASE_CONTENT_URL}${r.poster_path}`,
             overview: r.overview,
-            title: `${r.original_title} (${r.release_date.split('-')[0]})`,
+            title: `${r.original_title}`,
             year: r.release_date.split('-')[0]
           } as MovieCardProps));
 

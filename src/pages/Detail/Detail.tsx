@@ -6,6 +6,7 @@ import './Detail.scss';
 
 import routes from '../../constants/apiRoutes';
 import MovieCard, { MovieCardProps } from '../../components/MovieCard/MovieCard';
+import WishlistButton from '../../components/WishlistButton/WishlistButton';
 
 interface MovieDetail {
   id: string;
@@ -73,7 +74,7 @@ const Detail = () => {
         <div className="detail__header">
           <img className="detail__poster" src={`${movieDetail.poster}`} alt="" />
           <div className="detail__info">
-            <p className="detail__title">{movieDetail.title} ({movieDetail.release_date.split('-')[0]})</p>
+            <p className="detail__title">{movieDetail.title} ({movieDetail.release_date.split('-')[0]}) <WishlistButton movieId={movieDetail.id} size="25" /></p>
             <p>{movieDetail.genres.join(', ')}</p>
             <p>{movieDetail.overview}</p>
           </div>

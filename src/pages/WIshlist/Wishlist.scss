@@ -1,0 +1,8 @@
+@import '../../sass/variables';
+
+.wishlist {
+  padding-top: 5rem;
+  &__label {
+    color: $colorAccent2;
+  }
+}
